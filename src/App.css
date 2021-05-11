@@ -1,10 +1,12 @@
-.App {
-  text-align: center;
+nav {
+  display: flex;
+  flex-direction: row;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+li {
+  display: inline-block;
+  padding: 14px;
+  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
