@@ -1,0 +1,35 @@
+label {
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 2px;
+}
+
+input {
+  display: block;
+  width: 400px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428543;
+  color: #555;
+  border: 1px solid #ccc;
+  margin-bottom: 3px;
+}
+
+.form-control {
+  border: 0px;
+  height: 80px;
+  text-align: left;
+  margin-left: 20px;
+}
+
+#submitButton {
+  margin-left: 150px;
+}
+
+#form-tabel {
+  text-align: left;
+}
+
+#dataangajare {
+  width: 220px;
+}
