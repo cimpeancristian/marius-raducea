@@ -19,7 +19,7 @@ const Generate = () => {
 	
 	console.log(TABLE_DATA);  
 	const columns = useMemo(()=> GROUPED_COLUMNS, []);
-	const data = useMemo(()=> TABLE_DATA, []);
+	const data = TABLE_DATA;
 
 	const tableInstance = useTable({columns, data});
 	const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = tableInstance;
