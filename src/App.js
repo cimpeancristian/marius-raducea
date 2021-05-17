@@ -1,5 +1,7 @@
+import React, {useState} from 'react';
+
 import './App.css';
-import React from 'react';
+
 import Home from './Home/Home';
 import Generate from './Generate/Generare';
 import AddDates from './AddDates/AddDates';
@@ -10,7 +12,11 @@ import {
   Link
 } from "react-router-dom";
 
-function App() {
+
+const App = () => {
+  const [dates, setDates] = useState({});
+  console.log(Object.keys(dates).length);
+
   return (
     <Router>
       <div>
@@ -22,18 +28,19 @@ function App() {
             <li>
               <Link to="/adauga">Adauga Date</Link>
             </li>
-            <li>
-              <Link to="/generare">Generare</Link>
-            </li>
+            {Object.keys(dates).length !== 0 && (
+              <li>
+                <Link to="/generare">Generare</Link>
+              </li>)}
           </ul>
         </nav>
 
         <Switch>
           <Route path="/generare">
-            <Generate />
+            <Generate dates={dates} />
           </Route>
           <Route path="/adauga">
-            <AddDates />
+            <AddDates setDates={setDates} />
           </Route>
           <Route path="/">
             <Home />

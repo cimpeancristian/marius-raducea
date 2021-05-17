@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
+
 import Button from 'react-bootstrap/Button';
 
 import FormikControl from './FormikControl';
@@ -16,7 +17,8 @@ const initialValues = {
     dataCredit: new Date(),
     dobandaCredit: '',
     comisionRiscuri: '',
-    
+    valut: 'EURO',
+    numarLuni: ''
 };
 
 const validationSchema = Yup.object({
@@ -28,7 +30,9 @@ const validationSchema = Yup.object({
     scheduledDate:Yup.number()
                         .typeError(VALIDATION.typeError)
                         .positive(VALIDATION.positive)
-                        .required(VALIDATION.field),
+                        .required(VALIDATION.field)
+                        .max(31, VALIDATION.maxDay)
+                        .min(1, VALIDATION.minDay),
     dataCredit: Yup.date().required(VALIDATION.field),
     dobandaCredit: Yup.number()
                         .typeError(VALIDATION.typeError)
@@ -37,12 +41,17 @@ const validationSchema = Yup.object({
     comisionRiscuri: Yup.number()
                     .typeError(VALIDATION.typeError)
                     .positive(VALIDATION.positive)
-                    .required(VALIDATION.field)
+                    .required(VALIDATION.field),
+    numarLuni: Yup.number()
+                    .typeError(VALIDATION.typeError)
+                    .positive(VALIDATION.positive)
+                    .required(VALIDATION.field)               
 });
 
-const AddDates = () => {
+const AddDates = ({setDates}) => {
 	const onSubmit = async (values, onSubmitProps) => {
-		console.log(values);
+        console.log(values);
+        setDates(values);
 		onSubmitProps.resetForm();
 	}; 
 
@@ -57,6 +66,8 @@ const AddDates = () => {
                 <Form id='form-tabel'>
                     <FormikControl control='input' label='Numar Contract' name='contract' />
                     <FormikControl control='input' label='Valoare Credit' name='creditValue' />
+                    <FormikControl control='select' label='Valuta' name='valut' />
+                    <FormikControl control='input' label='Numar de luni' name='numarLuni' />
                     <FormikControl control='number' label='Data scadenta' name='scheduledDate' />
                     <FormikControl control='date' label='Data de acordare a creditului' name='dataCredit' />
                     <FormikControl control='input' label='Dobanda Credit (%)' name='dobandaCredit' />
