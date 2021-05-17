@@ -16,9 +16,8 @@ const Generate = ({dates}) => {
 	let dataScadenta ='';
 	
 	console.log(dayDiff);
-	dayDiff>=0 ? dataScadenta =  moment(dates.dataCredit).subtract(dayDiff, 'days').add(1, 'month'): dataScadenta = moment(dates.dataCredit).add(-dayDiff, 'days');
-	console.log(dayDiff, dataScadenta.format('DD-MM-YYYY'));
-	const dataAcordareCredit = dataScadenta.format('DD-MM-YYYY');
+	dayDiff>0 ? dataScadenta =  moment(dates.dataCredit).subtract(dayDiff, 'days'): dataScadenta = moment(dates.dataCredit).add(-dayDiff, 'days').subtract(1, 'month');
+	const acordareCredit = moment(dates.dataCredit).format('DD-MM-YYYY');
 
 	const TABLE_DATA = [];
 	const nrLuni = dates.numarLuni;
@@ -43,7 +42,7 @@ const Generate = ({dates}) => {
 
 	return (
 		<>
-			<h2>Graficul de rambursare refăcut prin determinarea dobânzii variabile a creditului conform Contractului de credit bancar nr. {dates.contract}/{dataAcordareCredit}</h2>
+			<h2>Graficul de rambursare refăcut prin determinarea dobânzii variabile a creditului conform Contractului de credit bancar nr. {dates.contract}/{acordareCredit}</h2>
 			<table {...getTableProps()}>
 				<thead >
 					{headerGroups.map(headerGroup => (
