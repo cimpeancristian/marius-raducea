@@ -40,7 +40,6 @@ const validationSchema = Yup.object({
                         .required(VALIDATION.field),
     comisionRiscuri: Yup.number()
                     .typeError(VALIDATION.typeError)
-                    .positive(VALIDATION.positive)
                     .required(VALIDATION.field),
     numarLuni: Yup.number()
                     .typeError(VALIDATION.typeError)
